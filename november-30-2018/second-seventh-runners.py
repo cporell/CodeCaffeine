@@ -13,11 +13,19 @@ runners_time = np.random.normal(mean, std, 10000)
 
 
 def find_2nd_fastest_runner(runners_time):
-    second_fastest_runner = 60
-
+	fastest_runner = 2^63-1
+	second_fastest_runner = 2^63-1
+	i = 0
     #your code here. try to do in one pass of for loop.
-
-    return second_fastest_runner
+	while i < len(runners_time):
+		if runners_time[i] < second_fastest_runner:
+			if runners_time[i] <= fastest_runner:
+				second_fastest_runner = fastest_runner
+				fastest_runner = runners_time[i]
+			else:
+				second_fastest_runner = runners_time[i]
+		i += 1
+	return second_fastest_runner
 
 
 def find_7th_fastest_runner(runners_time):
@@ -28,6 +36,15 @@ def find_7th_fastest_runner(runners_time):
     
     return seventh_fastest_runner
 
+
+print (sorted(runners_time)[0])
+print (sorted(runners_time)[1])
+print (sorted(runners_time)[2])
+print (sorted(runners_time)[3])
+print (sorted(runners_time)[4])
+print (sorted(runners_time)[5])
+print (sorted(runners_time)[6])
+print (sorted(runners_time)[7])
 
 if (sorted(runners_time)[1] == find_2nd_fastest_runner(runners_time)):
     print "Second fastest runner is ", find_2nd_fastest_runner(runners_time)
