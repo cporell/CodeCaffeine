@@ -29,22 +29,13 @@ def find_2nd_fastest_runner(runners_time):
 
 
 def find_7th_fastest_runner(runners_time):
-    seventh_fastest_runner = 60
+	seventh_fastest_runner = 60
 
-    # your code here
-    # try to do it faster than O(NlogN) type solution. hint (use heap data-structure)
-    
-    return seventh_fastest_runner
-
-
-print (sorted(runners_time)[0])
-print (sorted(runners_time)[1])
-print (sorted(runners_time)[2])
-print (sorted(runners_time)[3])
-print (sorted(runners_time)[4])
-print (sorted(runners_time)[5])
-print (sorted(runners_time)[6])
-print (sorted(runners_time)[7])
+	list_runners_time = runners_time.tolist()
+	heapq.heapify(list_runners_time)
+	seventh_fastest_runner = heapq.nsmallest(7, list_runners_time)[6]
+	
+	return seventh_fastest_runner
 
 if (sorted(runners_time)[1] == find_2nd_fastest_runner(runners_time)):
     print "Second fastest runner is ", find_2nd_fastest_runner(runners_time)
